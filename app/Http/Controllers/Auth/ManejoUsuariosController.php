@@ -19,6 +19,7 @@ class ManejoUsuariosController extends Controller
     {
         $usuarios = User::paginate(self::USUARIOS_POR_PAGINA);
         return view('pages.users.index', compact('usuarios'));
+        
     }
     public function crear()
     {

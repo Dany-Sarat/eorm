@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\ManejoUsuariosController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -57,3 +58,15 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
+// custom register route
+Route::group(['middleware' => ['auth', 'rol_director']], function(){
+    Route::get('/usuarios', [ManejoUsuariosController::class, 'index'])->name('users.index');
+    Route::get('/usuarios/ver/{id}', [ManejoUsuariosController::class, 'ver'])
+    ->name('users.ver');
+    Route::put('/usuarios/actualizar/{id}', [ManejoUsuariosController::class, 'actualizar'])
+    ->name('users.actualizar');
+    Route::get('/usuarios/crear', [ManejoUsuariosController::class, 'crear'])
+    ->name('users.crear');
+    Route::post('/usuarios/guardar', [ManejoUsuariosController::class, 'guardar'])
+    ->name('users.guardar');
+    });
