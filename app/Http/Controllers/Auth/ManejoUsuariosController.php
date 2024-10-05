@@ -40,6 +40,7 @@ class ManejoUsuariosController extends Controller
             'formacion_academica' => [
                 'required',
                 Rule::in(array_column(Formacion::cases(), 'value')),
+                Rule::in(array_column(Formacion::cases(), 'name'))
             ],
             'inicio_laboral' => 'required|date',
             'tipo_contrato' => [
@@ -50,7 +51,7 @@ class ManejoUsuariosController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator->errors());
         }
-        DB::beginTransaction();
+        DB::beginTransaction(); // iniciar transaccion
         try {
             $usuario = new User();
             $usuario->email = $request->email;
@@ -69,13 +70,14 @@ class ManejoUsuariosController extends Controller
             $infoDocente->tipo_contrato = $request->tipo_contrato;
             $infoDocente->user_id = $usuario->id;
             $infoDocente->save();
-            Db::commit();
+
+            Db::commit(); // confirmar transaccion
             return redirect(route('users.ver', $usuario->id))
             ->with([
                 'creacion_exitosa' => 'Se creó usuario correctamente'
             ]);
         } catch (\Throwable $th) {
-            DB::rollBack();
+            DB::rollBack(); // revertir cambios
             return back()->withErrors([
                 'creacion_fallida' => 'Se produjo un error en la creación de usuario',
             ]);
@@ -103,6 +105,7 @@ class ManejoUsuariosController extends Controller
             'formacion_academica' => [
                 'required',
                 Rule::in(array_column(Formacion::cases(), 'value')),
+                Rule::in(array_column(Formacion::cases(), 'name'))    
             ],
             'tipo_contrato' => [
                 'required',
