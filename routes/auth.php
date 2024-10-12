@@ -36,7 +36,7 @@ Route::middleware('guest')->group(function () {
         ->name('password.store');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(["auth"])->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
         ->name('verification.notice');
 
@@ -59,7 +59,7 @@ Route::middleware('auth')->group(function () {
         ->name('logout');
 });
 // custom register route
-Route::group(['middleware' => ['auth', 'rol_director']], function(){
+Route::group(['middleware' => ['auth', 'rol_director', "verified"]], function(){
     Route::get('/usuarios', [ManejoUsuariosController::class, 'index'])->name('users.index');
     Route::get('/usuarios/ver/{id}', [ManejoUsuariosController::class, 'ver'])
     ->name('users.ver');
