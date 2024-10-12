@@ -77,6 +77,15 @@ use \App\Common\Contrato;
               >
               {{Formacion::DIVERSIFICADO->value}}
             </option>
+
+            @foreach (Formacion::cases() as $formacion)
+                
+                <option value="{{$formacion->name}}" @selected($usuario->infoDocente->formacion_academica == $formacion->name)>
+                  {{$formacion->value}}
+                </option> 
+                
+                @endforeach
+
           </select>
         </div>
         <div class="w-1/2">
