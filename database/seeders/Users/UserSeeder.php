@@ -17,7 +17,9 @@ class UserSeeder extends Seeder
         $director->email = 'dire@example.test';
         $director->password = Hash::make('admin1234');
         $director->rol = 'DIRECTOR';
+        $director->markEmailAsVerified();
         $director->save();
+
         $infoUsuario = new InfoUsuario();
         $infoUsuario->nombres = 'Juan';
         $infoUsuario->apellidos = 'Hernandez';
@@ -35,7 +37,9 @@ class UserSeeder extends Seeder
         $docente->email = 'docente@example.test';
         $docente->password = Hash::make('admin1234');
         $docente->rol = 'DOCENTE';
+        $docente->markEmailAsVerified();
         $docente->save();
+
         $infoUsuarioDocente = new InfoUsuario();
         $infoUsuarioDocente->nombres = 'Maria';
         $infoUsuarioDocente->apellidos = 'Gonzalez';

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('grado_id')->constrained('grados');
         });
 
-        Schema::create('cursos_grados', function(Blueprint $table){
+        Schema::create('curso_grado', function(Blueprint $table){
             $table->id();
             $table->timestamps();
             $table->foreignId('curso_id')->constrained('cursos');

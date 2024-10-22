@@ -20,6 +20,12 @@ class Grado extends Model
     {
         return $this->belongsToMany(Curso::class);
     }
+
+    public function tieneCurso(string $id) : ?Model 
+    {
+        return $this->cursos()->wherePivot('curso_id', $id)->first(['cursos.id', 'cursos.nombre']);
+    }
+    
     // public function cursos() : HasMany
     // {
     //     return $this->hasMany(Curso::class);

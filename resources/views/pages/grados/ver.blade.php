@@ -38,7 +38,11 @@
               </label>
               <select x-bind:id="`seccion_docente_${index}`" x-bind:name="`seccion_docente_${index}`"
                 x-model="option.docente_id"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-800 
+                dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 
+                dark:focus:border-blue-500">
+
                 @foreach ($docentes as $docente)
                 <option value="{{$docente->id}}">
                   {{$docente->infoUsuario->nombres}} {{$docente->infoUsuario->apellidos}}
@@ -48,7 +52,24 @@
             </div>
           </div>
       </div>
+
       </template>
+
+      <h2 class="text-gray-800 dark:text-gray-200 md:text-lg text-base mt-5">
+        Cursos asignados
+      </h2>
+      <div class="dark:bg-gray-600 mt-5 p-2 rounded-md bg-gray-200 max-w-xl mx-auto flex gap-2 flex-wrap">
+        @foreach ($cursos as $curso)
+        <label class="text-xs md:text-sm text-gray-800 dark:text-gray-200" for="{{'curso_' . $curso->id}}">
+          <input type="checkbox" name="{{'curso_' . $curso->id}}" id="{{'curso_' . $curso->id}}" value="{{$curso->id}}"
+            @checked($grado->tieneCurso($curso->id) ? true : false)
+          />
+          
+          {{$curso->nombre}}
+        </label>
+        @endforeach
+      </div>
+
   </div>
   <button type="submit"
     class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">

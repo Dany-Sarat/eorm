@@ -1,10 +1,14 @@
 <?php
 
 namespace Database\Seeders;
+
 use Database\Seeders\Users\UserSeeder;
 
 use App\Models\User;
+use Database\Seeders\Cursos\CursoSeeder;
 use Database\Seeders\Users\UserSeeder;
+
+
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -17,6 +21,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
+            CursoSeeder::class,
         ]);
     }
 }
