@@ -13,3 +13,7 @@ Route::post('/guardar', [GradoController::class, 'guardar'])
 Route::get('/editar/{id}', [GradoController::class, 'editar'])
   ->middleware(['auth'])
   ->name('grados.editar');
+
+  Route::put("/actualizar/{id}", [GradoController::class, 'actualizar'])
+  ->middleware(['auth'])
+  ->name('grados.actualizar');
