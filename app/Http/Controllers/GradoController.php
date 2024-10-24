@@ -81,7 +81,7 @@ class GradoController extends Controller
         }
         $docentes = User::with('infoUsuario')->get(['id', 'nombres', 'apellidos']);
         $cursos = Curso::all();
-        
+
         return view('pages.grados.ver', compact('grado', 'docentes'));
     }
 }
