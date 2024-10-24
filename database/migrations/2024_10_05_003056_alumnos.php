@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('codigo');
-            $table->string('primer nombre'); 
+            $table->string('nombre'); 
             $table->string('apellido');
             $table->string('telefono');
             $table->string('correo');
@@ -26,8 +26,8 @@ return new class extends Migration
             $table->date('fecha_nacimiento'); 
             $table->timestamps();
 
-            $table->foreignId('grado_id')->references('grados');
-            $table->foreignId('seccion_id')->references('secciones');
+            //$table->foreignId('grado_id')->references('grados');
+            //$table->foreignId('seccion_id')->references('secciones');
 
             $table->foreignId('grado_id')->nullable()->constrained('grados');
             $table->foreignId('seccion_id')->nullable()->constrained('secciones');

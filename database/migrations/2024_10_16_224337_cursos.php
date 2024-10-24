@@ -14,8 +14,8 @@ return new class extends Migration
             $table->string('nombre');
             $table->timestamps();
 
-            $table->foreignId('grado_id')->references('grados');
-            $table->foreignId('grado_id')->constrained('grados');
+            //$table->foreignId('grado_id')->references('grados');
+            //$table->foreignId('grado_id')->constrained('grados');
         });
 
         Schema::create('curso_grado', function(Blueprint $table){
@@ -31,8 +31,8 @@ return new class extends Migration
             $table->timestamps();
 
 
-            $table->foreignId('curso_id')->references('cursos');
-            $table->foreignId('alumno_id')->references('alumnos');
+            //$table->foreignId('curso_id')->references('cursos');
+            //$table->foreignId('alumno_id')->references('alumnos');
             $table->foreignId('curso_id')->constrained('cursos');
             $table->foreignId('alumno_id')->constrained('alumnos');
         });

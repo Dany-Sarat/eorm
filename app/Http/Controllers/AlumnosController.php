@@ -3,9 +3,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ActualizarAlumnoRequest;
 use App\Http\Requests\CrearAlumnoRequest;
 use App\Models\Alumno;
+use App\Models\Seccion;
+
 class AlumnosController extends Controller
 {
     private const ALUMNOS_PER_PAGE = 2;
+
     public function index()
     {
         $alumnos = Alumno::paginate(self::ALUMNOS_PER_PAGE);
@@ -13,8 +16,10 @@ class AlumnosController extends Controller
     }
     public function crear()
     {
-        return view('pages.alumnos.crear');
+        $secciones = Seccion::all();
+        return view('pages.alumnos.crear', compact('secciones'));
     }
+
     public function guardar(CrearAlumnoRequest $request)
     {
         $alumno = new Alumno();
@@ -26,6 +31,11 @@ class AlumnosController extends Controller
         $alumno->nombre_encargado = $request->input('nombre_encargado');
         $alumno->apellido_encargado = $request->input('apellido_encargado');
         $alumno->fecha_nacimiento = $request->input('fecha_nacimiento');
+
+        $seccion = Seccion::where('id', $request->input('seccion'))->first();
+        $alumno->seccion_id = $seccion->id;
+        $alumno->grado_id = $seccion->grado->id;
+
         $result = $alumno->save();
         if ($result == true) {
             return redirect(route('alumnos.editar', $alumno->id))
@@ -40,8 +50,10 @@ class AlumnosController extends Controller
         if ($alumno == null) {
             abort(404);
         }
-        return view('pages.alumnos.ver', compact('alumno'));
+        $secciones = Seccion::all();
+        return view('pages.alumnos.ver', compact('alumno', 'secciones'));
     }
+
     public function actualizar(mixed $id, ActualizarAlumnoRequest $request)
     {
         $alumno = Alumno::where('id', $id)->first();

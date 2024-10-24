@@ -15,9 +15,11 @@
   </span>
   @endif
   <div class="py-5 max-w-2xl mx-auto">
-    {{-- <div x-data="{
+    
+  
+  {{-- <div x-data="{
         
-        
+
         confirm() {
           const form = document.getElementById('form');
           const validacion = confirm('¿Está seguro que desea eliminar este curso?'); 

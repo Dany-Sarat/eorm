@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use AppModels\Curso;
+use App\Models\Curso;
 use App\Models\Grado;
 use App\Models\Seccion;
 use App\Models\User;
@@ -23,7 +23,7 @@ class GradoController extends Controller
         // ->pluck('id', 'nombres', 'apellidos');  
         $cursos = Curso::all();
 
-        return view('pages.grados.crear', compact('docentes'));
+        return view('pages.grados.crear', compact('docentes', 'cursos'));
     }
     public function guardar(Request $request) 
     {

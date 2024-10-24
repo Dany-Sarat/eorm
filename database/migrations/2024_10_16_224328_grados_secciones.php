@@ -18,10 +18,10 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->timestamps();
-            $table->foreignId('docente_id')->references('docentes');
+            //$table->foreignId('docente_id')->references('docentes');
             $table->foreignId('docente_id')->constrained('users');
-            $table->foreignId('grado_id')->references('grados');
-            $table->foreignId('docente_id')->constrained('docentes');
+            //$table->foreignId('grado_id')->references('grados');
+            //$table->foreignId('docente_id')->constrained('docentes');
             $table->foreignId('grado_id')->constrained('grados');
         });
         Schema::create('asistencias', function(Blueprint $table){
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->dateTime('fecha_toma_asistencia');
             $table->timestamps();
 
-            $table->foreignId('seccion_id')->references('secciones');
+            //$table->foreignId('seccion_id')->references('secciones');
             $table->foreignId('seccion_id')->constrained('secciones');
 
         });
@@ -38,8 +38,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps(); 
             
-            $table->foreignId('alumno_id')->references('alumnos');
-            $table->foreignId('asistencia_id')->references('asistencias');
+            //$table->foreignId('alumno_id')->references('alumnos');
+            //$table->foreignId('asistencia_id')->references('asistencias');
             $table->foreignId('alumno_id')->constrained('alumnos');
             $table->foreignId('asistencia_id')->constrained('asistencias');
         });

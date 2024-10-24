@@ -6,7 +6,6 @@ use Database\Seeders\Users\UserSeeder;
 
 use App\Models\User;
 use Database\Seeders\Cursos\CursoSeeder;
-use Database\Seeders\Users\UserSeeder;
 
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -21,7 +20,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            CursoSeeder::class,
+            //sCursoSeeder::class,
         ]);
     }
 }

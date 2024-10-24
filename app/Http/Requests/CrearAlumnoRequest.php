@@ -25,6 +25,7 @@ class CrearAlumnoRequest extends FormRequest
             'nombre_encargado' => 'required|string',
             'apellido_encargado' => 'required|string',
             'fecha_nacimiento' => 'required|date',
+            'seccion' => 'required',
         ];
     }
 }

@@ -18,6 +18,12 @@ class Alumno extends Model
     {
         return $this->belongsToMany(Asistencia::class);
     }
+    
+    public function grado(): BelongsTo
+    {
+        return $this->belongsTo(Grado::class);
+    }
+
     public function notas() : HasMany
     {
         return $this->hasMany(Nota::class);
