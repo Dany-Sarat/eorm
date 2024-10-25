@@ -22,6 +22,10 @@ return Application::configure(basePath: dirname(__DIR__))
                 Route::middleware('web')
                 ->prefix('cursos')
                 ->group(base_path('routes/cursos.php'));
+
+                Route::middleware('web')
+                ->prefix('mis-secciones')
+                ->group(base_path('routes/mis_secciones.php'));
         }
     )
     ->withMiddleware(function (Middleware $middleware) {

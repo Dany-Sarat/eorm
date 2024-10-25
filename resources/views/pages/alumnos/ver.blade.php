@@ -20,6 +20,9 @@
     </span>
     @enderror
     <div class="py-5 max-w-2xl mx-auto">
+    <h1 class="font-bold text-base md:text-xl text-gray-800 dark:text-gray-200">
+            Actualmente en {{$alumno->grado_actual}}
+        </h1>
         <form class="max-w-xl mx-auto" action="{{route('alumnos.actualizar', $alumno->id)}}" method="POST">
             @csrf
             @method('PUT')
@@ -52,7 +55,8 @@
             </div>
             <div class="mb-5">
                 <label for="correo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                    Correo Electrónico
+
+                    Correo Electrónico (opcional)
                 </label>
                 <input type="text" id="correo" name="correo"
                     class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
@@ -94,7 +98,8 @@
                     >
                     @foreach ($secciones as $seccion)
                     <option value={{$seccion->id}}
-                        selected="{{$seccion->id == $alumno->seccion_id}}"
+                    {{-- selected="{{$seccion->id == $alumno->seccion_id}}" --}}
+                    @selected($seccion->id == $alumno->seccion_id)
                         @disabled($seccion->id != $alumno->seccion_id) 
                         >
                         {{$seccion->grado->nombre}} - {{$seccion->nombre}}

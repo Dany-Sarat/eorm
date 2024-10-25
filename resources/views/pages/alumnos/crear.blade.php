@@ -41,7 +41,7 @@
       <div class="mb-5">
         <label for="correo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
           
-          Correo Electrónico
+        Correo Electrónico (opcional)
         </label>
         <input type="text" id="correo" name="correo"
           class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 

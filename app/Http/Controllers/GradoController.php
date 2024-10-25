@@ -15,7 +15,7 @@ class GradoController extends Controller
     public function index() {
 
 
-        $grados = Grado::whereYear('created_at', now()->format('Y'))->paginate(self::GRADOS_POR_PAGINA);
+        $grados = Grado::where('anio_asignacion', now()->format('Y'))->paginate(self::GRADOS_POR_PAGINA);
         return view('pages.grados.index', compact('grados'));
     }
     public function crear () {
@@ -31,6 +31,7 @@ class GradoController extends Controller
         try {
             $grado = new Grado();
             $grado->nombre = $request->input('nombre');
+            $grado->anio_asignacion = $request->input('anio_asignacion');
             $grado->save();
             
             $index = 0;
@@ -112,6 +113,7 @@ class GradoController extends Controller
                 // se agregan las secciones correspondientes
                 for ($i = 0; $i < $index; $i++) {
                     $seccion = Seccion::where('id', $request->input("seccion_id_{$i}"));
+                    
                     $seccion->update([
                         'nombre' => $request->input("seccion_nombre_{$i}"),
                         'docente_id' => $request->input("seccion_docente_{$i}"),

@@ -18,24 +18,19 @@ return new class extends Migration
             $table->string('nombre'); 
             $table->string('apellido');
             $table->string('telefono');
-            $table->string('correo');
+            $table->string('correo')->nullable();
             $table->string('nombre_encargado');
             $table->string('apellido_encargado');
-            $table->decimal('promedio', 4, 2)->nullable();
             $table->boolean('estado_aprobacion',)->nullable();
+            $table->string('grado_actual')->nullable();
             $table->date('fecha_nacimiento'); 
             $table->timestamps();
-
-            //$table->foreignId('grado_id')->references('grados');
-            //$table->foreignId('seccion_id')->references('secciones');
 
             $table->foreignId('grado_id')->nullable()->constrained('grados');
             $table->foreignId('seccion_id')->nullable()->constrained('secciones');
             
         });
-        Schema::create('asistencia', function(Blueprint $table){
-            $table->id();
-        });
+     
     }
 
     /**

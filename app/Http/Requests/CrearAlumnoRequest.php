@@ -21,7 +21,7 @@ class CrearAlumnoRequest extends FormRequest
             'nombre' => 'required|string',
             'apellido' => 'required|string',
             'telefono' => 'required|min:8',
-            'correo' => 'required|email',
+            'correo' => 'nullable|string',
             'nombre_encargado' => 'required|string',
             'apellido_encargado' => 'required|string',
             'fecha_nacimiento' => 'required|date',
