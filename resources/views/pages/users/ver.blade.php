@@ -97,9 +97,9 @@ use \App\Common\Contrato;
             placeholder="edad" value="{{$usuario->infoDocente->inicio_laboral->format('d/m/Y')}}" disabled />
         </div>
       </div>
+
       <div class="mb-5">
-        <label for="tipo_contrato" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">formación
-          académica</label>
+      <label for="tipo_contrato" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de contrato</label>
         <select id="tipo_contrato" name="tipo_contrato"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           <option value="{{Contrato::CONTRATO}}" @selected($usuario->infodocente->tipo_contrato ==
